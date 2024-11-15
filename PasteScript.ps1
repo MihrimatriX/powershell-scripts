@@ -2,7 +2,7 @@ $oncekiMetin = ""
 $dosyaYolu = "C:\Users\AFU\Desktop\DEV\DEV\Down.txt"
 
 while ($true) {
-    $clipboardIcerik = Get-Clipboard -Raw -Format Text -TextFormatType Text
+    $clipboardIcerik = Get-Clipboard -Raw
 
     if ($null -ne $clipboardIcerik -and $dosyaYolu -ne $null) {
         if ($clipboardIcerik -ne $oncekiMetin) {
