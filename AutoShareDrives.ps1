@@ -3,11 +3,9 @@ function New-DriveDetected {
         [string]$DriveLetter
     )
 
-    # Yeni sürücüyü ağ üzerinde paylaş
     $shareName = $DriveLetter.TrimEnd(':')
     $path = "${DriveLetter}\"
 
-    # Ağ paylaşımını oluştur
     $netShareCommand = "net share $shareName=$path /GRANT:everyone,FULL"
     
     try {
@@ -17,10 +15,8 @@ function New-DriveDetected {
     }
 }
 
-# Önceki sürücüleri takip et
 $previousDrives = (Get-PSDrive -PSProvider FileSystem).Root.TrimEnd('\')
 
-# Yeni sürücüler takıldığında kontrol et
 while ($true) {
     $currentDrives = (Get-PSDrive -PSProvider FileSystem).Root.TrimEnd('\')
     $newDrives = $currentDrives | Where-Object { $previousDrives -notcontains $_ }
@@ -29,7 +25,6 @@ while ($true) {
         New-DriveDetected -DriveLetter $drive
     } 
 
-    # Yeni sürücüleri güncelle
     $previousDrives = $currentDrives
     Start-Sleep -Seconds 10
 }
