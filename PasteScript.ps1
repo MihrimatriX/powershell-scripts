@@ -1,5 +1,5 @@
 $oncekiMetin = ""
-$dosyaYolu = "C:\Users\AFU\Desktop\DEV\DEV\Down.txt"
+$dosyaYolu = "C:\Users\AFU\Desktop\DEV\Down.txt"
 
 while ($true) {
     $clipboardIcerik = Get-Clipboard -Raw
